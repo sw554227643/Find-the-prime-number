@@ -1,0 +1,13 @@
+#!/usr/bin/env python 
+# -*- coding:utf-8 -*-
+
+#九九乘法表
+
+for x in range(1,10):
+    for y in range(1,x + 1):
+        print("{} X {} = {}".format(x,y,x*y),end = '\t')
+    print()
+
+
+#print '\n'.join(['\t'.join(['%d * %d = %d'%(y,x,x*y) for y in range(1,x+1)])for x in range(1,10)])
+#利用列表生成器来打印九九乘法表
