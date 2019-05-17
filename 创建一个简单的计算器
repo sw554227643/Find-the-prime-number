@@ -1,0 +1,44 @@
+#!/usr/bin/env python 
+# -*- coding:utf-8 -*-
+
+#计算器
+#输入一个等式如1 + 2 就可直接显示数据结果
+#此程序有BUG,等式必须要 空格 分割开才可
+
+#加法
+def add(x,y):
+    return (x + y)
+
+#减法
+def subtract(x,y):
+    return (x - y)
+
+#乘法
+def multiply(x,y):
+    return (x * y)
+
+#除法
+def divide(x,y):
+    return (x // y)
+
+
+def Count(formula):
+    a = list(formula.split(' '))       #利用partition字符串函数来将等式分割成三部分
+    print(a)            #分割后的列表
+    x = int(a[0])       #提取被减数
+    Sign = a[1]         #提取运算符
+    y = int(a[2])       #提取减数
+    #定义一个
+    Dic = {'+': add(x,y),'-': subtract(x,y),'*': multiply(x,y),'//':divide(x,y)}
+    if Sign == '+':
+        resurt = Dic['+']
+    elif Sign == '-':
+        resurt = Dic['-']
+    elif Sign == '*':
+        resurt = Dic['*']
+    elif Sign == '//':
+        resurt = Dic['//']
+    print(x,Sign,y,'=',resurt)     #打印
+
+num1 = str(input('请输入需要计算的等式：'))
+Count(num1)
