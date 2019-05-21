@@ -1,0 +1,30 @@
+import time
+import threading
+
+
+#从threading.Thread继承
+class myThread(threading.Thread):
+    def __init__(self,threadID,name,counter):
+        #调用父类的构造函数
+        super(myThread, self).__init__() #注意此处，可能需要显式的调用父类的构造函数，super(myThread,self).__init__()
+        #重写了父类部分的构造函数
+        self.threadID = threadID
+        self.name = name
+        self.counter = counter
+
+    #重写threading.Thread 方法的 run()函数
+    #定义每个线程要运行的函数
+    def run(self):
+        print('开始线程：' + self.name)
+        time.sleep(5)
+        # print_time(self.name,self.counter,5)
+        #start调用run()函数，使线程运行，然后打印
+        print(self.name,time.ctime(time.time()))
+
+
+for i in range(1,3):
+    t = myThread(i,'Thread-{}'.format(i),i)
+    t.start()
+#等待子程序执行完成了再结束主线程
+t.join()
+print(  ' main thread end!')
